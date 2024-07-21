@@ -1,0 +1,22 @@
+if (loginService.Login(loginInfo) == ActivityStatus.LOGIN_SUCCESS) {
+            //创建session
+            HttpSession session = request.getSession();
+            //往session中储存用户信息
+            session.setAttribute("account", loginInfo.getAccount());
+            session.setAttribute("password", loginInfo.getPassword());
+            session.setAttribute("e_mail", loginInfo.getE_mail());
+           /* //创建一个cookie用于保存sessionid
+            Cookie cookie = new Cookie("session", session.getId());
+            //设置cookie的有效时间
+            cookie.setMaxAge(Integer.MAX_VALUE);
+            //将cookie添加到响应行
+            response.addCookie(cookie);*/
+            if (session.isNew()) {
+                System.out.println("session创建成功 " + session.getId());
+            } else {
+                System.out.println("session已经存在 " + session.getId());
+            }
+            return session.getId();
+        } else {
+            return ActivityStatus.STRING_LOGIN_FAILED;
+        }

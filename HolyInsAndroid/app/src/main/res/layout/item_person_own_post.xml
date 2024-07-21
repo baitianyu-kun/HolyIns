@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/person_own_post_item_user_name_headpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/person_own_post_time_divider"
+        android:layout_marginTop="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/person_own_post_item_head_pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:src="@mipmap/icon_user_click"
+            app:civ_border_color="@color/a_little_white"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/person_own_post_item_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/person_own_post_item_head_pic"
+            android:text="TextView"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/person_own_post_item_subscribe_btn"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/selector_button_short_press"
+            android:text="@string/subscribe"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/person_own_post_item_photo"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/person_own_post_item_photo_description"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@mipmap/default_photo" />
+
+
+    <TextView
+        android:id="@+id/person_own_post_item_photo_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/person_own_post_item_user_name_headpic"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/person_own_post_item_first_comment_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/person_own_post_item_like_image_btn"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/person_own_post_item_first_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/person_own_post_item_like_image_btn"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@id/person_own_post_item_first_comment_name"
+        android:text="TextView"
+        android:textSize="18dp" />
+
+    <ImageButton
+        android:id="@+id/person_own_post_item_like_image_btn"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/person_own_post_item_photo"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/person_own_post_item_forward_image_btn"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        app:srcCompat="@mipmap/icon_like" />
+
+    <ImageButton
+        android:id="@+id/person_own_post_item_forward_image_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/person_own_post_item_photo"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/person_own_post_item_comment_image_btn"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:tint="@color/black"
+        app:srcCompat="@mipmap/icon_forward" />
+
+    <ImageButton
+        android:id="@+id/person_own_post_item_comment_image_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/person_own_post_item_photo"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:tint="@color/black"
+        app:srcCompat="@mipmap/icon_comment" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/person_own_post_item_photo"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/hot_comment"
+        android:textSize="17dp" />
+
+    <RelativeLayout
+        android:id="@+id/person_own_post_time_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/person_own_post_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/borders_time"
+            android:text="TextView"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/person_own_post_delete_btn"
+            android:layout_width="70dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borders_content"
+            android:text="@string/delete" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="20dp"
+            android:layout_height="5dp"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/listDivider" />
+    </RelativeLayout>
+
+    
+
+
+</RelativeLayout>

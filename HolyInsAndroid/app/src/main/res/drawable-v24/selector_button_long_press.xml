@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 单击时的背景颜色 -->
+    <item
+        android:drawable="@drawable/shaoe_button_long_not_pressed"
+        android:state_pressed="true">
+    </item>
+    <!-- 未单击时的背景颜色 -->
+    <item
+        android:drawable="@drawable/shape_button_long_pressed"
+        android:state_pressed="false">
+    </item>
+</selector>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.contentMapper.ContentMapper">
+    <!--点赞-->
+    <insert id="insertIntoLikeTable" parameterType="likes" useGeneratedKeys="true" keyProperty="like_id"
+            keyColumn="like_id">
+        insert into holyins.likes(like_user_id, date_created, date_updated)
+        VALUES (#{like_user_id}, #{date_created}, #{date_updated})
+    </insert>
+    <insert id="insertIntoPhotoLikeTable">
+        insert into holyins.photo_likes(like_id, photo_id)
+        VALUES (#{like_id}, #{photo_id})
+    </insert>
+    <!--取消点赞-->
+    <delete id="deleteLikeTable" parameterType="Integer">
+        delete
+        from holyins.likes
+        where like_id = #{like_id}
+    </delete>
+    <delete id="deletePhotoLikeTable" parameterType="Integer">
+        delete
+        from holyins.photo_likes
+        where like_id = #{like_id}
+    </delete>
+
+    <delete id="deletePost" parameterType="Integer">
+        delete
+            holyins.photos,
+            holyins.photo_likes,
+            holyins.likes,
+            holyins.comments,
+            holyins.photos_comments,
+            holyins.photo_forward,
+            holyins.forwarding,
+            holyins.hashtags,
+            holyins.photo_hashtags
+        from (((((((holyins.photos
+            left join holyins.photo_likes on photos.photo_id = photo_likes.photo_id)
+            left join holyins.likes on photo_likes.like_id = likes.like_id)
+            left join holyins.photos_comments on photos.photo_id = photos_comments.photo_id )
+            left join holyins.comments on photos_comments.comment_id = comments.comment_id)
+            left join holyins.photo_forward on photos.photo_id = photo_forward.photo_id)
+            left join holyins.forwarding on photo_forward.forward_id = forwarding.forward_id)
+            left join holyins.photo_hashtags on photos.photo_id = photo_hashtags.photo_id)
+                 left join holyins.hashtags on photo_hashtags.hashtag_id = hashtags.hashtag_id
+        where photos.photo_id = #{photo_id}
+    </delete>
+
+    <!--订阅关注-->
+    <insert id="subscribe" parameterType="subscribe">
+        insert into holyins.subscribes(now_user_id, subscribe_userid, subscribe_time)
+        VALUES (#{now_user_id}, #{subscribe_userid}, #{subscribe_time})
+    </insert>
+
+    <select id="getSubscribe" resultType="Integer">
+        select subscribe_userid
+        from holyins.subscribes
+        where now_user_id = #{user_id}
+    </select>
+
+    <!--取消关注-->
+    <delete id="unSubscribe" parameterType="Integer">
+        delete
+        from holyins.subscribes
+        where now_user_id = #{now_user_id}
+          and subscribe_userid = #{unsubscribe_user_id}
+    </delete>
+
+    <!--评论-->
+    <insert id="insertIntoCommentsTable" parameterType="comment" useGeneratedKeys="true" keyProperty="comment_id"
+            keyColumn="comment_id">
+        insert into holyins.comments(comment_text, comment_time, comment_user_id)
+        VALUES (#{comment_text}, #{comment_time}, #{comment_user_id})
+    </insert>
+    <insert id="insertIntoPhotoCommentTable">
+        insert into holyins.photos_comments(photo_id, comment_id)
+        VALUES (#{photo_id}, #{comment_id})
+    </insert>
+
+    <!--获取评论-->
+    <select id="getComment" parameterType="map" resultType="Comment">
+        select * from holyins.comments
+        <where>
+            <foreach collection="comment_ids" item="comment_id" open="and (" close=")" separator="or">
+                comment_id=#{comment_id}
+            </foreach>
+        </where>
+    </select>
+    <select id="getCommentByPhotoID" resultType="Comment">
+        select *
+        from holyins.comments c,
+             holyins.photos_comments pc
+        where photo_id = #{photo_id}
+          and c.comment_id = pc.comment_id
+    </select>
+
+    <!--转发-->
+    <insert id="insertIntoForwardingTable" parameterType="forwarding" useGeneratedKeys="true" keyColumn="forward_id"
+            keyProperty="forward_id">
+        insert into holyins.forwarding(forward_user_id, forward_text, forward_time)
+        VALUES (#{forward_user_id}, #{forward_text}, #{forward_time})
+    </insert>
+    <insert id="insertIntoPhotoForwardingTable">
+        insert into holyins.photo_forward(forward_id, photo_id)
+        VALUES (#{forward_id}, #{photo_id})
+    </insert>
+
+
+</mapper>

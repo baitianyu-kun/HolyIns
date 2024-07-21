@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity">
+
+    <TextView
+        android:id="@+id/register_page_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:text="@string/input_email"
+        android:textSize="40dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_page_text"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/register_page_input_name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/shape_edit_text_shape"
+            android:ems="10"
+            android:hint="@string/user_name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/register_page_input_psw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_page_input_name_et"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_edit_text_shape"
+            android:ems="10"
+            android:hint="@string/user_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/register_page_register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_page_radio_btn_group"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_button_short_press"
+            android:text="@string/register"
+            android:textColor="@color/white" />
+
+        <RadioGroup
+            android:id="@+id/register_page_radio_btn_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_page_input_psw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/register_page_boy_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/boy" />
+
+            <RadioButton
+                android:id="@+id/register_page_girl_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/girl" />
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_page_input_email_lay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/register_page_input_validation_code_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_edit_text_shape"
+            android:ems="10"
+            android:hint="@string/validation_code"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/register_page_input_validation_code_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toRightOf="@id/register_page_input_validation_code_et"
+            android:background="@drawable/selector_button_short_press"
+            android:text="@string/sure"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/register_page_input_email_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_page_text"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/register_page_input_email_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/shape_edit_text_shape"
+            android:ems="10"
+            android:hint="@string/input_email" />
+
+        <Button
+            android:id="@+id/register_page_input_email_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@id/register_page_input_email_et"
+            android:background="@drawable/selector_button_short_press"
+            android:text="@string/send_validation_code"
+
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.searchMapper.SearchMapper">
+    <select id="findUser" parameterType="map" resultType="userInfo">
+        select * from holyins.userinfo
+        <where>
+            <choose>
+                <when test="user_id!=null">
+                    user_id=#{user_id}
+                </when>
+                <when test="account!=null">
+                    account=#{account}
+                </when>
+                <when test="e_mail!=null">
+                    e_mail=#{e_mail}
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="findUsers" parameterType="map" resultType="userInfo">
+        select * from holyins.userinfo
+        <where>
+            <choose>
+                <when test="user_ids!=null">
+                    <foreach collection="user_ids" item="user_id" open="and (" close=")" separator="or">
+                        user_id=#{user_id}
+                    </foreach>
+                </when>
+                <when test="accounts!=null">
+                    <foreach collection="accounts" item="account" open="and (" close=")" separator="or">
+                        account=#{account}
+                    </foreach>
+                </when>
+                <when test="e_mails!=null">
+                    <foreach collection="e_mails" item="e_mail" open="and (" close=")" separator="or">
+                        e_mail=#{e_mail}
+                    </foreach>
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="findUserByName" resultType="userInfo">
+        select *
+        from holyins.userinfo
+        where name like #{name}
+    </select>
+    <select id="findPhotoIDByPhotoDescribe" resultType="Integer">
+        select photo_id
+        from holyins.photos
+        where photo_description like #{photo_description}
+    </select>
+    <select id="findHashTagID" resultType="Integer">
+        select hashtag_id
+        from holyins.hashtags
+        where hashtag_text like #{hashtag_text}
+    </select>
+    <select id="findPhotoIDByHashTagID" parameterType="map" resultType="Integer">
+        select photo_id
+        from holyins.photo_hashtags
+        <where>
+            <foreach collection="hashtagIDs" item="hashtag_id" open="and (" close=")" separator="or">
+                hashtag_id=#{hashtag_id}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

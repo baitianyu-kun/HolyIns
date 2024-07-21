@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PersonInfoChangeActivity">
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/person_info_change_page_head_pic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:src="@mipmap/icon_user_click"
+        app:civ_border_color="@color/a_little_white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        app:civ_border_width="2dp" />
+
+    <EditText
+        android:id="@+id/person_info_change_page_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/person_info_change_page_head_pic"
+        android:ems="10"
+        android:background="@drawable/shape_edit_text_shape"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPersonName"
+        android:text="Name" />
+    <RadioGroup
+        android:id="@+id/person_info_change_page_radio_btn_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/person_info_change_page_name"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/person_info_change_page_boy_radio_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boy" />
+
+        <RadioButton
+            android:id="@+id/person_info_change_page_girl_radio_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/girl" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/person_info_change_page_log_out_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/selector_button_long_press"
+        android:textColor="@color/white"
+        android:layout_below="@id/person_info_change_page_sure_btn"
+        android:layout_marginTop="20dp"
+        android:text="@string/log_out" />
+
+    <Button
+        android:id="@+id/person_info_change_page_sure_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_button_long_press"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/person_info_change_page_radio_btn_group"
+        android:text="@string/change_person_info" />
+
+</RelativeLayout>

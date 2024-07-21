@@ -1,0 +1,45 @@
+package com.bai.HolyIns.state;
+
+public class ThreadState {
+    public final static int USER_INFO=1;
+    public final static int PHOTO=2;
+    public final static int HEAD_PIC=3;
+    public final static int POST=4;
+    public final static int SUBSCRIBE=5;
+    public final static int UN_SUBSCRIBE=6;
+    public final static int COMMENT=7;
+    public final static int FORWARD=8;
+    public final static int LIKE=9;
+    public final static int GET_COMMENT=10;
+    public final static int GET_COMMENT_BY_PHOTO_ID=11;
+    public final static int GET_SUBSCRIBE=12;
+    public final static int GET_POST_BY_USER_ID=13;
+    public final static int GET_SUBSCRIBED_USER_POST=14;
+    public final static int UNSUBSCRIBE=15;
+    public final static int LIKE_USER_POST=16;
+    public final static int CANCEL_LIKE=18;
+    public final static int FIND_ALL_USER=19;
+    public final static int FIND_POST_BY_PHOTO_DESCRIPTION=20;
+    public final static int FIND_OWN_POST=21;
+    public final static int FIND_OWN_LIKE_POST=22;
+    public final static int FIND_OWN_FORWARDING_POST=23;
+    public final static int NOW_USER_HEAD_PIC=24;
+    public final static int SUBSCRIBE_STATUS=25;
+    public final static int GET_RECOMMEND_POST=26;
+    public final static int FIND_USER_BY_IDS=27;
+    public final static int UPLOAD_HEAD_PIC=28;
+    public final static int UPLOAD_PHOTO=29;
+    public final static int RELEASE_POST=30;
+    public final static int DELETE_POST=31;
+    public final static int LOGIN=32;
+    public final static int FIND_USER_BY_ACCOUNT=33;
+    public final static int FIND_USER_BY_EMAIL=34;
+    public final static int REGISTER_SEND_VALIDATION_CODE=35;
+    public final static int REGISTER_VALIDATE_CODE=36;
+    public final static int REGISTER_REGISTER=37;
+    public final static int COUNT_DOWN=38;
+    public final static int FIND_PSW_SEND_VALIDATION_CODE=39;
+    public final static int FIND_PSW_VALIDATE_CODE=40;
+    public final static int FIND_PSW_CHANGE_PSW=41;
+    public final static int CHANGE_PERSON_INFO=42;
+}

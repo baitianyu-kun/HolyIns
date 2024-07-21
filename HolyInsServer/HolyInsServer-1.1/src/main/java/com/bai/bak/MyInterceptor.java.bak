@@ -1,0 +1,25 @@
+package com.bai.config;
+
+import com.bai.session.MySessionContext;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MyInterceptor extends HandlerInterceptorAdapter {
+
+    //处理前
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("=============拦截器处理前=============");
+        System.out.println(request.getRequestURI());
+        return true;
+    }
+
+    //处理后，渲染modelandview前，可以用来打印日志
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        System.out.println("[MYLOGGER] 请求："+request.getRequestURI());
+    }
+}

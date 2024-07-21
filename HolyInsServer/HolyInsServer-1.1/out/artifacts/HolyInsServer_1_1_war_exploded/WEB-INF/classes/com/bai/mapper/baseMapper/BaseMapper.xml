@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.baseMapper.BaseMapper">
+    <select id="findSpecificPostByPhotoID" resultMap="getPost">
+        select p.photo_id          photo_id
+             , p.user_id           user_id
+             , p.date_created      photo_created
+             , p.date_updated      photo_updated
+             , p.photo_description photo_description
+             , p.photo_path        photo_path
+             , p.photo_size        photo_size
+             , c.comment_user_id   comment_user_id
+             , c.comment_text      comment_text
+             , c.comment_id        comment_id
+             , c.comment_time      comment_time
+             , h.hashtag_id        hashtag_id
+             , h.hashtag_text      hashtag_text
+             , f.forward_text      forward_text
+             , f.forward_time      forward_time
+             , f.forward_id        forward_id
+             , f.forward_user_id   forward_user_id
+             , l.like_user_id      like_user_id
+             , l.like_id           like_id
+             , l.date_updated      like_date_updated
+             , l.date_created      like_date_created
+             , u.user_id           user_id
+             , u.name              user_name
+             , u.account           user_account
+             , u.e_mail            user_email
+             , u.headPicturePath   userheadpicturepath
+             , u.headPictureSize   userheadpicturesize
+             , u.registerTime      userregistertime
+             , u.sex               usersex
+        from ((((((((holyins.photos p left join holyins.photo_likes pl on p.photo_id = pl.photo_id) left join holyins.likes l on pl.like_id = l.like_id)
+            left join holyins.photos_comments pc on p.photo_id = pc.photo_id)
+            left join holyins.comments c on pc.comment_id = c.comment_id)
+            left join holyins.photo_forward pf on p.photo_id = pf.photo_id)
+            left join holyins.forwarding f on f.forward_id = pf.forward_id)
+            left join holyins.photo_hashtags ph on p.photo_id = ph.photo_id)
+            left join holyins.hashtags h on ph.hashtag_id = h.hashtag_id)
+                 left join holyins.userinfo u on p.user_id = u.user_id
+        where p.photo_id=#{photo_id}
+    </select>
+    <!--例如  一对多的数据对象，本来是一的对象下面有多的list集合对象，但是在映射时会出现一的list集合，而这个集合是按照多的来一个一个的封装的，这样并不是我们想要的结果，
+    解决的方法：是在每个封装对象的关系映射中加id来辨别，这样数据就不会出现错误。
+    在看到resultMap的官方文档中：
+    id – 一个 ID 结果;标记结果作为 ID 可以帮助提高整体效能
+    或许是作为唯一的标记来规范，id为此resultMap的标识-->
+    <resultMap id="getPost" type="Post">
+        <result property="photo_id" column="photo_id"/>
+        <association property="hashTag" javaType="HashTag">
+            <result property="hashtag_id" column="hashtag_id"/>
+            <result property="hashtag_text" column="hashtag_text"/>
+        </association>
+        <association property="photo" javaType="Photo">
+            <result property="photo_id" column="photo_id"/>
+            <result property="photo_description" column="photo_description"/>
+            <result property="photo_path" column="photo_path"/>
+            <result property="photo_size" column="photo_size"/>
+            <result property="date_created" column="photo_created"/>
+            <result property="date_updated" column="photo_updated"/>
+        </association>
+        <association property="userInfo" javaType="UserInfo">
+            <result property="user_id" column="user_id"/>
+            <result property="name" column="user_name"/>
+            <result property="account" column="user_account"/>
+            <result property="e_mail" column="user_email"/>
+            <result property="headPicturePath" column="userheadpicturepath"/>
+            <result property="headPictureSize" column="userheadpicturesize"/>
+            <result property="sex" column="usersex"/>
+            <result property="registerTime" column="userregistertime"/>
+        </association>
+        <collection property="comments" ofType="Comment">
+            <result property="comment_id" column="comment_id"/>
+            <result property="comment_user_id" column="comment_user_id"/>
+            <result property="comment_text" column="comment_text"/>
+            <result property="comment_time" column="comment_time"/>
+        </collection>
+        <collection property="forwardings" ofType="Forwarding">
+            <result property="forward_id" column="forward_id"/>
+            <result property="forward_user_id" column="forward_user_id"/>
+            <result property="forward_text" column="forward_text"/>
+            <result property="forward_time" column="forward_time"/>
+        </collection>
+        <collection property="likes" ofType="Likes">
+            <result property="like_user_id" column="like_user_id"/>
+            <result property="like_id" column="like_id"/>
+            <result property="date_created" column="like_date_updated"/>
+            <result property="date_updated" column="like_date_created"/>
+        </collection>
+    </resultMap>
+    <resultMap id="getUserPost" type="UserPost">
+        <result property="photo_id" column="photo_id"/>
+        <association property="hashTag" javaType="HashTag">
+            <result property="hashtag_id" column="hashtag_id"/>
+            <result property="hashtag_text" column="hashtag_text"/>
+        </association>
+        <association property="photo" javaType="Photo">
+            <result property="photo_id" column="photo_id"/>
+            <result property="photo_description" column="photo_description"/>
+            <result property="photo_path" column="photo_path"/>
+            <result property="photo_size" column="photo_size"/>
+            <result property="date_created" column="photo_created"/>
+            <result property="date_updated" column="photo_updated"/>
+        </association>
+        <association property="userInfo" javaType="UserInfo">
+            <result property="user_id" column="user_id"/>
+            <result property="name" column="user_name"/>
+            <result property="account" column="user_account"/>
+            <result property="e_mail" column="user_email"/>
+            <result property="headPicturePath" column="userheadpicturepath"/>
+            <result property="headPictureSize" column="userheadpicturesize"/>
+            <result property="sex" column="usersex"/>
+            <result property="registerTime" column="userregistertime"/>
+        </association>
+        <collection property="comment_id" ofType="Integer">
+            <result property="comment_id" column="comment_id"/>
+        </collection>
+        <collection property="forwardings" ofType="Forwarding">
+            <result property="forward_id" column="forward_id"/>
+            <result property="forward_user_id" column="forward_user_id"/>
+            <result property="forward_text" column="forward_text"/>
+            <result property="forward_time" column="forward_time"/>
+        </collection>
+        <collection property="likes" ofType="Likes">
+            <result property="like_user_id" column="like_user_id"/>
+            <result property="like_id" column="like_id"/>
+            <result property="date_created" column="like_date_updated"/>
+            <result property="date_updated" column="like_date_created"/>
+        </collection>
+    </resultMap>
+    <select id="findAllPostsByUserID" resultMap="getPost">
+        select p.photo_id               photo_id
+             , p.user_id                user_id
+             , p.date_created           photo_created
+             , p.date_updated           photo_updated
+             , p.photo_description      photo_description
+             , p.photo_path             photo_path
+             , p.photo_size             photo_size
+             , com.comment_user_id      comment_user_id
+             , com.comment_text         comment_text
+             , com.comment_id           comment_id
+             , com.comment_time         comment_time
+             , has.hashtag_id           hashtag_id
+             , has.hashtag_text         hashtag_text
+             , f.forward_text           forward_text
+             , f.forward_time           forward_time
+             , f.forward_id             forward_id
+             , f.forward_user_id        forward_user_id
+             , lik.like_user_id         like_user_id
+             , lik.like_id              like_id
+             , lik.date_updated         like_date_updated
+             , lik.date_created         like_date_created
+             , userinfo.user_id         user_id
+             , userinfo.name            user_name
+             , userinfo.account         user_account
+             , userinfo.e_mail          user_email
+             , userinfo.headPicturePath userheadpicturepath
+             , userinfo.headPictureSize userheadpicturesize
+             , userinfo.registerTime    userregistertime
+             , userinfo.sex             usersex
+
+        from holyins.photos p,
+             holyins.photos_comments pc,
+             holyins.comments com,
+             holyins.photo_hashtags ph,
+             holyins.hashtags has,
+             holyins.photo_forward pf,
+             holyins.forwarding f,
+             holyins.photo_likes pl,
+             holyins.likes lik,
+             holyins.userinfo userinfo
+        where p.user_id = #{user_id}
+          and userinfo.user_id = #{user_id}
+          and p.photo_id = pc.photo_id
+          and com.comment_id = pc.comment_id
+          and p.photo_id = ph.photo_id
+          and ph.hashtag_id = has.hashtag_id
+          and p.photo_id = pf.photo_id
+          and pf.forward_id = f.forward_id
+          and p.photo_id = pl.photo_id
+          and pl.like_id = lik.like_id
+    </select>
+    <select id="findAllUserPostsByUserID" resultMap="getUserPost">
+        select p.photo_id          photo_id
+             , p.user_id           user_id
+             , p.date_created      photo_created
+             , p.date_updated      photo_updated
+             , p.photo_description photo_description
+             , p.photo_path        photo_path
+             , p.photo_size        photo_size
+             , c.comment_user_id   comment_user_id
+             , c.comment_text      comment_text
+             , c.comment_id        comment_id
+             , c.comment_time      comment_time
+             , h.hashtag_id        hashtag_id
+             , h.hashtag_text      hashtag_text
+             , f.forward_text      forward_text
+             , f.forward_time      forward_time
+             , f.forward_id        forward_id
+             , f.forward_user_id   forward_user_id
+             , l.like_user_id      like_user_id
+             , l.like_id           like_id
+             , l.date_updated      like_date_updated
+             , l.date_created      like_date_created
+             , u.user_id           user_id
+             , u.name              user_name
+             , u.account           user_account
+             , u.e_mail            user_email
+             , u.headPicturePath   userheadpicturepath
+             , u.headPictureSize   userheadpicturesize
+             , u.registerTime      userregistertime
+             , u.sex               usersex
+        from ((((((((holyins.photos p
+            left join holyins.photo_likes pl on p.photo_id = pl.photo_id)
+            left join holyins.likes l on pl.like_id = l.like_id)
+            left join holyins.photos_comments pc on p.photo_id = pc.photo_id)
+            left join holyins.comments c on pc.comment_id = c.comment_id)
+            left join holyins.photo_forward pf on p.photo_id = pf.photo_id)
+            left join holyins.forwarding f on f.forward_id = pf.forward_id)
+            left join holyins.photo_hashtags ph on p.photo_id = ph.photo_id)
+            left join holyins.hashtags h on ph.hashtag_id = h.hashtag_id)
+                 left join holyins.userinfo u on p.user_id = u.user_id
+        where u.user_id=#{user_id}
+    </select>
+    <select id="findSpecificUserPostByPhotoID" resultMap="getUserPost">
+        select p.photo_id          photo_id
+             , p.user_id           user_id
+             , p.date_created      photo_created
+             , p.date_updated      photo_updated
+             , p.photo_description photo_description
+             , p.photo_path        photo_path
+             , p.photo_size        photo_size
+             , c.comment_user_id   comment_user_id
+             , c.comment_text      comment_text
+             , c.comment_id        comment_id
+             , c.comment_time      comment_time
+             , h.hashtag_id        hashtag_id
+             , h.hashtag_text      hashtag_text
+             , f.forward_text      forward_text
+             , f.forward_time      forward_time
+             , f.forward_id        forward_id
+             , f.forward_user_id   forward_user_id
+             , l.like_user_id      like_user_id
+             , l.like_id           like_id
+             , l.date_updated      like_date_updated
+             , l.date_created      like_date_created
+             , u.user_id           user_id
+             , u.name              user_name
+             , u.account           user_account
+             , u.e_mail            user_email
+             , u.headPicturePath   userheadpicturepath
+             , u.headPictureSize   userheadpicturesize
+             , u.registerTime      userregistertime
+             , u.sex               usersex
+        from ((((((((holyins.photos p
+            left join holyins.photo_likes pl on p.photo_id = pl.photo_id)
+            left join holyins.likes l on pl.like_id = l.like_id)
+            left join holyins.photos_comments pc on p.photo_id = pc.photo_id)
+            left join holyins.comments c on pc.comment_id = c.comment_id)
+            left join holyins.photo_forward pf on p.photo_id = pf.photo_id)
+            left join holyins.forwarding f on f.forward_id = pf.forward_id)
+            left join holyins.photo_hashtags ph on p.photo_id = ph.photo_id)
+            left join holyins.hashtags h on ph.hashtag_id = h.hashtag_id)
+                 left join holyins.userinfo u on p.user_id = u.user_id
+        where p.photo_id=#{photo_id}
+    </select>
+</mapper>

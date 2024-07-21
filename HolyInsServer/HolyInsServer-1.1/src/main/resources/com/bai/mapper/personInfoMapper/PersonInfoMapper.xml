@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.personInfoMapper.PersonInfoMapper">
+    <resultMap id="getForwardInfo" type="ForwardPhotoID">
+        <id property="row_no" column="row_no"/>
+        <result property="photo_id" column="photo_id"/>
+        <association property="forwarding" javaType="Forwarding">
+            <result property="forward_id" column="forward_id"/>
+            <result property="forward_user_id" column="forward_user_id"/>
+            <result property="forward_text" column="forward_text"/>
+            <result property="forward_time" column="forward_time"/>
+        </association>
+    </resultMap>
+    <resultMap id="getLikeInfo" type="LikePhotoID">
+        <result property="photo_id" column="photo_id"/>
+        <association property="likes" javaType="Likes">
+            <result property="like_user_id" column="like_user_id"/>
+            <result property="like_id" column="like_id"/>
+            <result property="date_created" column="date_created"/>
+            <result property="date_updated" column="date_updated"/>
+        </association>
+    </resultMap>
+    <select id="forwardPhotoIDs" parameterType="Integer" resultMap="getForwardInfo">
+        select @row_no := @row_no + 1 as row_no,
+               f.forward_id              forward_id,
+               f.forward_user_id         forward_user_id,
+               f.forward_text            forward_text,
+               f.forward_time            forward_time,
+               pf.photo_id               photo_id
+        from holyins.forwarding f,
+             holyins.photo_forward pf
+        where f.forward_user_id = #{forward_user_id}
+          and f.forward_id = pf.forward_id
+    </select>
+    <select id="likePhotoIDs" parameterType="Integer" resultMap="getLikeInfo">
+        select l.like_id      like_id,
+               l.like_user_id like_user_id,
+               l.date_created date_created,
+               l.date_updated date_updated,
+               pl.photo_id    photo_id
+        from holyins.likes l,
+             holyins.photo_likes pl
+        where l.like_user_id = #{like_user_id}
+          and l.like_id = pl.like_id
+    </select>
+    <update id="changeUserInfo" parameterType="userInfo">
+        update holyins.userinfo
+        set userinfo.name=#{name},
+            userinfo.sex=#{sex},
+            userinfo.headPicturePath=#{headPicturePath},
+            userinfo.headPictureSize=#{headPictureSize}
+        where userinfo.user_id = #{user_id}
+    </update>
+    <update id="changeLoginInfo">
+        update holyins.logininfo
+        set name=#{name}
+        where account=#{account}
+    </update>
+</mapper>

@@ -1,0 +1,15 @@
+
+
+    //获取点赞的photo_id,时间和更新时间
+    List<Likes> getLike(@Param("user_id") int user_id);
+
+    <select id="getLike" resultType="likes">
+            select l.like_user_id,
+                   pl.photo_id,
+                   l.date_created,
+                   l.date_updated
+            from holyins.likes l,
+                 holyins.photo_likes pl
+            where l.like_user_id = 1
+              and l.like_id = pl.like_id
+        </select>

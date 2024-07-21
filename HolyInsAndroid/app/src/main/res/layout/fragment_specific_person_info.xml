@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SpecificPersonInfoFragment">
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/specific_person_page_head_pic_name_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/specific_person_page_head_pic"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@mipmap/icon_user_click"
+                app:civ_border_color="@color/a_little_white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/specific_person_page_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/specific_person_page_head_pic"
+                android:text="TextView"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/specific_person_page_subscribe_btn"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/selector_button_short_press"
+                android:text="@string/subscribe"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/specific_person_page_subscribers_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/specific_person_page_name"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/specific_person_page_head_pic"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+        </RelativeLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/specific_person_page_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/specific_person_page_head_pic_name_lay">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/specific_person_page_tab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/specific_person_page_head_pic_name_lay"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/blue_like">
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </RelativeLayout>
+</FrameLayout>

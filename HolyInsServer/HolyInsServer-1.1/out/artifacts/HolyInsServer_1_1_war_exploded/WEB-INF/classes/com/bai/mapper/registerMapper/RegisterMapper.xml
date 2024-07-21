@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.registerMapper.RegisterMapper">
+    <insert id="RegisterToUserInfo" parameterType="userInfo">
+        insert into holyins.userinfo(name, account, e_mail, headPicturePath, headPictureSize, sex, registerTime)
+        values (#{name}, #{account}, #{e_mail}, #{headPicturePath}, #{headPictureSize}, #{sex}, #{registerTime});
+    </insert>
+    <insert id="RegisterToLoginInfo" parameterType="loginInfo">
+        insert into holyins.logininfo(account, e_mail, password, name)
+        VALUES (#{account}, #{e_mail}, #{password}, #{name})
+    </insert>
+    <select id="IsAccountExist" parameterType="String" resultType="Integer">
+        select 1
+        from holyins.logininfo
+        where account = #{account}
+        limit 1
+    </select>
+    <select id="IsE_mailExist" parameterType="String" resultType="Integer">
+        select 1
+        from holyins.logininfo
+        where e_mail = #{e_mail}
+        limit 1
+    </select>
+
+</mapper>

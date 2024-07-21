@@ -1,0 +1,45 @@
+<resources>
+    <string name="register">注册</string>
+    <string name="boy">男孩子</string>
+    <string name="girl">女孩子</string>
+    <string name="user_sex">性别</string>
+    <string name="user_password">密码</string>
+    <string name="app_name">HolyIns</string>
+    <string name="user_account">账号:</string>
+    <string name="psw_short">密码:</string>
+    <string name="app_title">HolyIns</string>
+    <string name="input_email">请输入有效邮箱</string>
+    <string name="sure">确定</string>
+    <string name="login_btn">登录</string>
+    <string name="register_btn">注册账号</string>
+    <string name="forget_psw">忘记密码</string>
+    <string name="main_page">首页</string>
+    <string name="search_page">搜索</string>
+    <string name="post_page">发布</string>
+    <string name="person_info">我</string>
+    <string name="hot_comment">热评</string>
+    <string name="subscribe">关注</string>
+    <string name="unsubscribe">取消关注</string>
+    <string name="search_btn">搜索</string>
+    <string name="send">发送</string>
+    <string name="comment_default_content">快留下精彩的评论吧~</string>
+    <string name="forward_default_content">写下转发的理由吧~</string>
+    <string name="search_user_page_et">输入用户名、账号、邮箱</string>
+    <string name="search_post_page_et">输入帖子文案</string>
+    <string name="recommend">Recommend</string>
+    <string name="recommend_page">推荐</string>
+    <string name="subscribe_english_text">Subscribes</string>
+    <string name="loading">正在加载</string>
+    <string name="write_photo_description">写下照片描述:</string>
+    <string name="release">发布</string>
+    <string name="delete">删除</string>
+    <string name="send_validation_code">发送验证码</string>
+    <string name="validation_code">验证码</string>
+    <string name="user_name">用户姓名</string>
+    <string name="email">邮箱</string>
+    <string name="new_psw">新密码</string>
+    <string name="log_out">退出登录</string>
+    <string name="change_person_info">修改信息</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bai.mapper.loginMapper.LoginMapper">
+    <select id="ReturnPwd" parameterType="loginInfo" resultType="String">
+        select password from holyins.logininfo
+        <where>
+            <if test="e_mail!=null">
+                e_mail=#{e_mail}
+            </if>
+            <if test="account!=null">
+                account=#{account}
+            </if>
+        </where>
+    </select>
+</mapper>

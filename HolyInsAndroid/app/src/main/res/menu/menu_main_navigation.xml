@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_recommendpage"
+        android:title="@string/recommend_page" />
+    <item
+        android:id="@+id/navigation_mainpage"
+        android:title="@string/main_page" />
+
+    <item
+        android:id="@+id/navigation_searchpage"
+        android:title="@string/search_page" />
+
+    <item
+        android:id="@+id/navigation_personinfo"
+        android:title="@string/person_info" />
+</menu>

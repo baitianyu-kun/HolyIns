@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.RecommendFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/recommend_page_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/recommend_page_app_bar">
+            <ListView
+                android:id="@+id/recommend_page_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/app_bar"
+                android:listSelector="@color/transparent"
+                />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <RelativeLayout
+            android:id="@+id/recommend_page_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:minHeight="?attr/actionBarSize"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="40dp" />
+
+            <ImageButton
+                android:id="@+id/recommend_page_release_post_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/white"
+                android:src="@mipmap/icon_release_post"
+                android:tint="@color/black" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

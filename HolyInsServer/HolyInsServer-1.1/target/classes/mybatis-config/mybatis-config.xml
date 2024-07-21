@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+
+    <typeAliases>
+        <package name="com.bai.pojo"/>
+    </typeAliases>
+    <mappers>
+        <mapper class="com.bai.mapper.loginMapper.LoginMapper"/>
+        <mapper class="com.bai.mapper.findpswMapper.FindPswMapper"/>
+        <mapper class="com.bai.mapper.registerMapper.RegisterMapper"/>
+        <mapper class="com.bai.mapper.baseMapper.BaseMapper"/>
+        <mapper class="com.bai.mapper.contentMapper.ContentMapper"/>
+        <mapper class="com.bai.mapper.searchMapper.SearchMapper"/>
+    </mappers>
+
+</configuration>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SearchUserFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/search_user_page_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_user_page_lay"/>
+
+        <RelativeLayout
+            android:id="@+id/search_user_page_lay"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/search_user_page_search_et"
+                android:layout_width="254dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/shape_edit_text_shape"
+                android:ems="10"
+                android:hint="@string/search_user_page_et"
+                android:inputType="textPersonName"
+                />
+
+            <Button
+                android:id="@+id/search_user_page_search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/selector_button_short_press"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/search_user_page_search_et"
+                android:text="@string/search_btn" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

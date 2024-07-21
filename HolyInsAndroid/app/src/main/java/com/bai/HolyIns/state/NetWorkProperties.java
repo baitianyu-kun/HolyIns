@@ -1,0 +1,46 @@
+package com.bai.HolyIns.state;
+
+public class NetWorkProperties {
+    public final static String URL="http://10.0.2.2:8080/HolyInsServer_1_1_war_exploded/";
+    //public final static String URL="http://192.168.43.185:8080/HolyInsServer_1_1_war_exploded/";
+    //public final static String URL="http://39.101.203.10:8080/HolyInsServer-1.1_war/";
+    public final static String GET_PHOTO="image/getPhoto";
+    public final static String GET_HEAD_PIC="image/getHeadPic";
+    public final static String FIND_ALL_POSTS_BY_USER_ID="base/findAllPostsByUserID";
+    public final static String FIND_ALL_USER_POSTS_BY_USER_ID="base/findAllUserPostsByUserID";
+    public final static String FIND_SPECIFIC_USER_POST_BY_PHOTO_ID="base/findSpecificUserPostByPhotoID";
+    public final static String FIND_USER_BY_ID="/search/findUserByID";
+    public final static String FIND_USER_BY_ACCOUNT="/search/findUserByAccount";
+    public final static String FIND_USER_BY_EMAIL="/search/findUserByEmail";
+    public final static String FIND_USER_BY_IDS="/search/findUsersByIDs";
+    public final static String SUBSCRIBE="/content/subscribe";
+    public final static String LIKE="/content/likePost";
+    public final static String LIKE_USER_POST="/content/likeUserPost";
+    public final static String FORWARD="/content/forwardPost";
+    public final static String COMMENT="/content/commentPost";
+    public final static String GET_COMMENT="/content/getComment";
+    public final static String GET_COMMENT_BY_PHOTO_ID="/content/getCommentByPhotoID";
+    public final static String GET_SUBSCRIBE="/content/getSubscribe";
+    public final static String GET_SUBSCRIBED_USER_POST="/content/getSubscribedUserPost";
+    public final static String UNSUBSCRIBE="/content/unSubscribe";
+    public final static String CANCEL_LIKE="/content/cancelLikePost";
+    public final static String FIND_ALL_USER="/search/findAllUser";
+    public final static String FIND_POST_BY_PHOTO_DESCRIBE="/search/findPostByPhotoDescribe";
+    public final static String FIND_OWN_POST="/personInfo/findOwnPost";
+    public final static String FIND_OWN_LIKE_POST="/personInfo/findOwnLikePost";
+    public final static String FIND_OWN_FORWARDING_POST="/personInfo/findOwnForwardingPost";
+    public final static String SUBSCRIBE_STATUS="/content/getSubscribeStatus";
+    public final static String GET_RECOMMEND_POST="/recommend/getRecommendPost";
+    public final static String UPLOAD_PHOTO="/image/uploadPhoto";
+    public final static String UPLOAD_HEAD_PIC="/image/uploadHeadPic";
+    public final static String RELEASE_POST="/release/releasePost";
+    public final static String DELETE_POST="/content/deletePost";
+    public final static String LOGIN="/login/login";
+    public final static String REGISTER_SEND_VALIDATION_CODE="/register/sendValidationCode";
+    public final static String REGISTER_VALIDATE_CODE="/register/validateCode";
+    public final static String REGISTER_REGISTER="/register/register";
+    public final static String CHANGE_PERSON_INFO="/personInfo/changeUserInfo";
+    public final static String FIND_PSW_SEND_VALIDATION_CODE="/findpsw/sendValidationCode";
+    public final static String FIND_PSW_VALIDATE_CODE="/findpsw/validateCode";
+    public final static String FIND_PSW_CHANGE_PSW="/findpsw/changePsw";
+}

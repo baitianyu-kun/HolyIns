@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PersonInfoFragment">
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/person_page_head_pic_name_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/person_page_head_pic"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@mipmap/icon_user_click"
+                app:civ_border_color="@color/a_little_white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/person_page_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/person_page_head_pic"
+                android:text="TextView"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/person_page_subscribers_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/person_page_name"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/person_page_head_pic"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+            <ImageButton
+                android:id="@+id/person_page_options_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/person_page_name"
+                android:background="@color/transparent"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_options"
+                android:tint="@color/gray" />
+
+            <ImageButton
+                android:id="@+id/person_page_log_out_btn"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/person_page_name"
+                android:background="@color/transparent"
+                android:src="@mipmap/icon_round_back" />
+
+
+        </RelativeLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/person_page_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/person_page_head_pic_name_lay">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/person_page_tab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/person_page_head_pic_name_lay"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/blue_like">
+
+        </com.google.android.material.tabs.TabLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>
